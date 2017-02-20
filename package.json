@@ -1,8 +1,8 @@
 {
-  "name": "ucar-Date",
+  "name": "ucar-date",
   "version": "0.0.1",
   "description": "ucar uitl for Date",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "mocha",
     "build": "rollup -c rollup.config.js"
@@ -11,6 +11,7 @@
     "ucar",
     "Date"
   ],
+  "homepage": "https://github.com/yusphy45/ucar-Date",
   "author": "yusphy45",
   "license": "MIT",
   "devDependencies": {
@@ -23,6 +24,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yusphy45/ucar-Date.git"
+    "url": "https://github.com/yusphy45/ucar-date.git"
   }
 }

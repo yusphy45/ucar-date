@@ -1,4 +1,4 @@
-const ucarDate = require('../dist/dist.js');
+const ucarDate = require('../dist/index.js');
 const assert = require('chai').assert;
 const foo = new ucarDate('2017-04-17');
 describe('ucarDate', function () {
