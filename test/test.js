@@ -1,33 +1,33 @@
 import UcarDate from '../dist/index.js';
 import { assert } from 'chai';
-const foo = new UcarDate('2017-04-17');
+const foo = new UcarDate('2017-02-21');
 describe('UcarDate', function () {
   describe('offsetOfLastMonth', function () {
     it('获取这个月的第一天应该是周几', function () {
-      assert.equal(6, foo.offsetOfLastMonth);
+      assert.equal(3, foo.offsetOfLastMonth);
     });
   });
   describe('@getAllOfWeek', function () {
     it('获取这周所有的日期实例', function () {
       const result = foo.getAllOfWeek();
       assert.equal(7, result.length);
-      assert.equal('2017-04-16', result[0].getDateStr());
+      assert.equal('2017-02-19', result[0].getDateStr());
       assert.equal(0, result[0].day);
-      assert.equal('2017-04-22', result[result.length - 1].getDateStr());
+      assert.equal('2017-02-25', result[result.length - 1].getDateStr());
       assert.equal(6, result[result.length - 1].day);
     });
   });
   describe('@getDaysOfMonth', function () {
     it('获取这个月有多少天', function () {
-      assert.equal(30, foo.getDaysOfMonth());
+      assert.equal(28, foo.getDaysOfMonth());
     });
   });
   describe('@getAllOfMonth', function () {
     it('获取这个月所有的日期实例', function () {
       const result = foo.getAllOfMonth();
-      assert.equal(30, result.length);
-      assert.equal('2017-04-01', result[0].getDateStr());
-      assert.equal('2017-04-30', result[result.length - 1].getDateStr());
+      assert.equal(28, result.length);
+      assert.equal('2017-02-01', result[0].getDateStr());
+      assert.equal('2017-02-28', result[result.length - 1].getDateStr());
     });
   });
   describe('@getDaysOfYear', function () {
@@ -45,31 +45,31 @@ describe('UcarDate', function () {
   });
   describe('@getDateStr', function () {
     it('获取格式化后的日期字符串', function () {
-      assert.equal('2017-04-17', foo.getDateStr());
+      assert.equal('2017-02-21', foo.getDateStr());
     });
   });
   describe('@getWeeksOfMonth', function () {
     it('获取这个月有多少周（按照首日非周日则并入上月计算)', function () {
-      assert.equal(5, foo.getWeeksOfMonth());
+      assert.equal(4, foo.getWeeksOfMonth());
     });
   });
   describe('@preDay', function () {
     it('获取前一天', function () {
-      assert.equal('2017-04-16', foo.preDay().getDateStr());
+      assert.equal('2017-02-20', foo.preDay().getDateStr());
     });
   });
   describe('@nextDay', function () {
     it('获取下一天', function () {
-      assert.equal('2017-04-18', foo.nextDay().getDateStr());
+      assert.equal('2017-02-22', foo.nextDay().getDateStr());
     });
   });
   describe('@getAllOfPreWeek', function () {
     it('获取上一周所有的日期实例', function () {
       const result = foo.getAllOfPreWeek();
       assert.equal(7, result.length);
-      assert.equal('2017-04-09', result[0].getDateStr());
+      assert.equal('2017-02-12', result[0].getDateStr());
       assert.equal(0, result[0].day);
-      assert.equal('2017-04-15', result[result.length - 1].getDateStr());
+      assert.equal('2017-02-18', result[result.length - 1].getDateStr());
       assert.equal(6, result[result.length - 1].day);
     });
   });
@@ -77,9 +77,9 @@ describe('UcarDate', function () {
     it('获取下一周所有的日期实例', function () {
       const result = foo.getAllOfNextWeek();
       assert.equal(7, result.length);
-      assert.equal('2017-04-23', result[0].getDateStr());
+      assert.equal('2017-02-26', result[0].getDateStr());
       assert.equal(0, result[0].day);
-      assert.equal('2017-04-29', result[result.length - 1].getDateStr());
+      assert.equal('2017-03-04', result[result.length - 1].getDateStr());
       assert.equal(6, result[result.length - 1].day);
     });
   });
@@ -87,16 +87,16 @@ describe('UcarDate', function () {
     it('获取上个月所有的日期实例', function () {
       const result = foo.getAllOfPreMonth();
       assert.equal(31, result.length);
-      assert.equal('2017-03-01', result[0].getDateStr());
-      assert.equal('2017-03-31', result[result.length - 1].getDateStr());
+      assert.equal('2017-01-01', result[0].getDateStr());
+      assert.equal('2017-01-31', result[result.length - 1].getDateStr());
     });
   });
   describe('@getAllOfNextMonth', function () {
     it('获取下个月所有的日期实例', function () {
       const result = foo.getAllOfNextMonth();
       assert.equal(31, result.length);
-      assert.equal('2017-05-01', result[0].getDateStr());
-      assert.equal('2017-05-31', result[result.length - 1].getDateStr());
+      assert.equal('2017-03-01', result[0].getDateStr());
+      assert.equal('2017-03-31', result[result.length - 1].getDateStr());
     });
   });
   describe('@getAllOfPreYear', function () {

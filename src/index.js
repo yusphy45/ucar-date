@@ -107,22 +107,22 @@ class UcarDate {
   }
 
   getAllOfPreMonth() {
-    const u = new UcarDate(this.timestamp - ONEDAY * this.getDaysOfMonth());
+    const u = new UcarDate(this.firstDayOfMonth).preDay();
     return u.getAllOfMonth();
   }
 
   getAllOfNextMonth() {
-    const u = new UcarDate(this.timestamp + ONEDAY * this.getDaysOfMonth());
+    const u = new UcarDate((new Date(this.timestamp)).setMonth(this.month));
     return u.getAllOfMonth();
   }
 
   getAllOfPreYear() {
-    const u = new UcarDate(this.timestamp - ONEDAY * this.getDaysOfYear());
+    const u = new UcarDate(this.firstDayOfYear).preDay();
     return u.getAllOfYear();
   }
 
   getAllOfNextYear() {
-    const u = new UcarDate(this.timestamp + ONEDAY * this.getDaysOfYear());
+    const u = new UcarDate((new Date(this.timestamp)).setYear(this.year + 1));
     return u.getAllOfYear();
   }
 }

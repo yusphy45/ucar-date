@@ -113,22 +113,22 @@ UcarDate.prototype.getAllOfNextWeek = function getAllOfNextWeek () {
 };
 
 UcarDate.prototype.getAllOfPreMonth = function getAllOfPreMonth () {
-  var u = new UcarDate(this.timestamp - ONEDAY * this.getDaysOfMonth());
+  var u = new UcarDate(this.firstDayOfMonth).preDay();
   return u.getAllOfMonth();
 };
 
 UcarDate.prototype.getAllOfNextMonth = function getAllOfNextMonth () {
-  var u = new UcarDate(this.timestamp + ONEDAY * this.getDaysOfMonth());
+  var u = new UcarDate((new Date(this.timestamp)).setMonth(this.month));
   return u.getAllOfMonth();
 };
 
 UcarDate.prototype.getAllOfPreYear = function getAllOfPreYear () {
-  var u = new UcarDate(this.timestamp - ONEDAY * this.getDaysOfYear());
+  var u = new UcarDate(this.firstDayOfYear).preDay();
   return u.getAllOfYear();
 };
 
 UcarDate.prototype.getAllOfNextYear = function getAllOfNextYear () {
-  var u = new UcarDate(this.timestamp + ONEDAY * this.getDaysOfYear());
+  var u = new UcarDate((new Date(this.timestamp)).setYear(this.year + 1));
   return u.getAllOfYear();
 };
 
