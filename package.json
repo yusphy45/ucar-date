@@ -1,11 +1,12 @@
 {
   "name": "ucar-date",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "ucar uitl for Date",
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
-    "build": "rollup -c rollup.config.js"
+    "build": "rollup -c rollup.config.js",
+    "dev": "rollup -c -w rollup.config.js"
   },
   "keywords": [
     "ucar",
@@ -22,7 +23,8 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "rollup": "^0.41.4",
-    "rollup-plugin-buble": "^0.15.0"
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-watch": "^3.2.2"
   },
   "repository": {
     "type": "git",

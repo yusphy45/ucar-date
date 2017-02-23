@@ -126,5 +126,13 @@ describe('UcarDate', function () {
       assert.equal('2017-12-28', preArr[0].getDateStr());
       assert.equal('2018-02-05', preArr[arr.length - 1].getDateStr());
     });
-  })
+  });
+  describe('@getOffsetOfDate', function () {
+    it('获取与指定时间之间的偏移量, 不包含当日', function () {
+      assert.equal(-1, foo.getOffsetOfDate('2017-02-20'));
+      assert.equal(349, foo.getOffsetOfDate('2018-02-05'));
+      assert.equal(181, foo.getOffsetOfDate('2017-08-21'));
+      assert.equal(-184, foo.getOffsetOfDate('2016-08-21'));
+    });
+  });
 });

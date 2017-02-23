@@ -18,6 +18,7 @@ var UcarDate = function UcarDate(date) {
     result.setFullYear(parseInt(arr[1]), arr[2] - 1, arr[3]);
   }
   var add = addProperty.bind(this);
+  result.setHours(0, 0, 1);
   add('value', result);
   add('timestamp', this.value.getTime());
   add('year', this.value.getFullYear());
@@ -54,6 +55,11 @@ UcarDate.prototype.getAllOfRange = function getAllOfRange (date, range, reverse)
     reverse ? arr.unshift(one) : arr.push(one);
   }
   return arr;
+};
+
+UcarDate.prototype.getOffsetOfDate = function getOffsetOfDate (date) {
+  if (!(date instanceof UcarDate)) { date = new UcarDate(date); }
+  return parseInt(((date.timestamp - this.timestamp) / ONEDAY).toFixed(0), 10);
 };
 
 UcarDate.prototype.getAllOfWeek = function getAllOfWeek () {

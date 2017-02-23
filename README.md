@@ -1,6 +1,6 @@
 ## ucar-date
 [![Npm Staus](https://img.shields.io/npm/v/ucar-date.svg)](https://www.npmjs.com/package/ucar-date)
-[![Build Status](https://travis-ci.org/yusphy45/ucar-Date.svg?branch=master)](https://travis-ci.org/yusphy45/ucar-Date)
+[![Build Status](https://travis-ci.org/yusphy45/ucar-date.svg?branch=master)](https://travis-ci.org/yusphy45/ucar-date)
 [![Coverage Status](https://coveralls.io/repos/github/yusphy45/ucar-Date/badge.svg?branch=master)](https://coveralls.io/github/yusphy45/ucar-Date?branch=master)
 > 神州优车Date工具集合
 
@@ -97,6 +97,12 @@ u.getAllOfPreYear()
 
 #获取下一年所有的日期实例:Array
 u.getAllOfNextYear()
+
+#获取与指定时间之间的偏移量:Number(date:Date/String/Number/UcarDate)
+u.getOffsetOfDate()
+#eg:
+	u.getOffsetOfDate('2016-08-21') 
+	/* -184 */ /* u当前日期为0往前数的第184天 */
 
 #获取指定范围内的所有日期实例:Array(date:Date/String/Number, range:Number, reverse(!required):Boolean)
 u.getAllOfRange()

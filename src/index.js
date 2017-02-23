@@ -17,6 +17,7 @@ class UcarDate {
       result.setFullYear(parseInt(arr[1]), arr[2] - 1, arr[3]);
     }
     const add = addProperty.bind(this);
+    result.setHours(0, 0, 1);
     add('value', result);
     add('timestamp', this.value.getTime());
     add('year', this.value.getFullYear());
@@ -48,6 +49,11 @@ class UcarDate {
       reverse ? arr.unshift(one) : arr.push(one)
     }
     return arr;
+  }
+
+  getOffsetOfDate(date) {
+    if (!(date instanceof UcarDate)) date = new UcarDate(date);
+    return parseInt(((date.timestamp - this.timestamp) / ONEDAY).toFixed(0), 10);
   }
 
   getAllOfWeek() {
