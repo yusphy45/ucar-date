@@ -1,6 +1,10 @@
 const fillZero = (num, total = 2) => {
   const length = `${num}`.length;
-  return length < total ? `${'0'.repeat(total - length)}${num}` : `${num}`;
+  let str = '';
+  for(let i = 0; i < total - length; i += 1) {
+    str += '0';
+  }
+  return length < total ? `${str}${num}` : `${num}`;
 };
 const addProperty = function (key, value) {
   Object.defineProperty(this, key, { configurable: true, enumerable: true, value, writable: false });
@@ -36,7 +40,7 @@ class UcarDate {
     firstDayOfYear.setFullYear(this.year, 0, 1);
     add('firstDayOfYear', firstDayOfYear);
     add('offsetOfLastMonth', (new Date(this.firstDayOfMonth.getTime())).getDay());
-    add('dateStr', this.getDateStr());
+    add('dateStr', `${fillZero(this.year)}-${fillZero(this.month)}-${fillZero(this.date)}`);
   }
 
   getDateStr(format = 'yyyy-MM-dd') {

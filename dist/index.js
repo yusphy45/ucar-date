@@ -2,7 +2,11 @@ var fillZero = function (num, total) {
   if ( total === void 0 ) total = 2;
 
   var length = ("" + num).length;
-  return length < total ? ("" + ('0'.repeat(total - length)) + num) : ("" + num);
+  var str = '';
+  for(var i = 0; i < total - length; i += 1) {
+    str += '0';
+  }
+  return length < total ? ("" + str + num) : ("" + num);
 };
 var addProperty = function (key, value) {
   Object.defineProperty(this, key, { configurable: true, enumerable: true, value: value, writable: false });
@@ -37,7 +41,7 @@ var UcarDate = function UcarDate(date) {
   firstDayOfYear.setFullYear(this.year, 0, 1);
   add('firstDayOfYear', firstDayOfYear);
   add('offsetOfLastMonth', (new Date(this.firstDayOfMonth.getTime())).getDay());
-  add('dateStr', this.getDateStr());
+  add('dateStr', ((fillZero(this.year)) + "-" + (fillZero(this.month)) + "-" + (fillZero(this.date))));
 };
 
 UcarDate.prototype.getDateStr = function getDateStr (format) {
