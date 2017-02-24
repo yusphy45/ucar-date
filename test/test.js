@@ -45,7 +45,8 @@ describe('UcarDate', function () {
   });
   describe('@getDateStr', function () {
     it('获取格式化后的日期字符串', function () {
-      assert.equal('2017-02-21', foo.getDateStr());
+      assert.equal('2017@02@21', foo.getDateStr('yyyy@MM@dd'));
+      assert.equal('2017-02-21', foo.dateStr);
     });
   });
   describe('@getWeeksOfMonth', function () {

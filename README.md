@@ -49,12 +49,17 @@ u.firstDayOfMonth
 
 # 当年的1月1号:Date
 u.firstDayOfYear
+
+# 当日的格式化后的字符串:String
+u.dateStr 格式:yyyy-MM-dd
 ```
 	
 ## API
 ```
-#获取格式化后的日期字符串:String
+#获取格式化后的日期字符串:String(format:String)
 u.getDateStr() 默认格式：yyyy-MM-dd
+#ps: format格式: yyyy$MM$dd 
+	 $可以是任意单个字符, yMd不可变
 
 #获取这周所有的日期实例:Array	
 u.getAllOfWeek()

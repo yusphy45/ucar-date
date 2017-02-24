@@ -36,10 +36,11 @@ class UcarDate {
     firstDayOfYear.setFullYear(this.year, 0, 1);
     add('firstDayOfYear', firstDayOfYear);
     add('offsetOfLastMonth', (new Date(this.firstDayOfMonth.getTime())).getDay());
+    add('dateStr', this.getDateStr());
   }
 
   getDateStr(format = 'yyyy-MM-dd') {
-    return format.replace(/yyyy([\/-])MM([\/-])dd/, `${this.year}$1${fillZero(this.month)}$2${fillZero(this.date)}`);
+    return format.replace(/yyyy(.)MM(.)dd/, `${this.year}$1${fillZero(this.month)}$2${fillZero(this.date)}`);
   }
 
   getAllOfRange(date, range = 0, reverse = false) {
