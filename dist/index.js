@@ -32,7 +32,7 @@ var UcarDate = function UcarDate(date) {
   add('isLeapYear', this.year % 4 === 0);
   add('isLongMonth', [1, 3, 5, 7, 8, 10, 12].indexOf(this.month) !== -1);
   var firstDayOfWeek = new Date();
-  firstDayOfWeek.setTime(this.timestamp - ONEDAY * this.day);
+  firstDayOfWeek.setTime(this.timestamp - ONEDAY * (this.day - 1));
   add('firstDayOfWeek', firstDayOfWeek);
   var firstDayOfMonth = new Date();
   firstDayOfMonth.setFullYear(this.year, this.month - 1, 1);
@@ -94,13 +94,13 @@ UcarDate.prototype.getWeeksOfMonth = function getWeeksOfMonth () {
       return 4;
       break;
     case 29:
-      return flag === 0 ? 5 : 4;
+      return flag === 1 ? 5 : 4;
       break;
     case 30:
-      return flag === 0 || flag > 5 ? 5 : 4;
+      return flag === 0 || flag > 6 ? 5 : 4;
       break;
     case 31:
-      return flag === 0 || flag > 4 ? 5 : 4;
+      return flag === 0 || flag > 5 ? 5 : 4;
       break;
   }
 };
