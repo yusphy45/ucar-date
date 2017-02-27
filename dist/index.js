@@ -50,11 +50,12 @@ UcarDate.prototype.getDateStr = function getDateStr (format) {
   return format.replace(/yyyy(.)MM(.)dd/, ((this.year) + "$1" + (fillZero(this.month)) + "$2" + (fillZero(this.date))));
 };
 
-UcarDate.prototype.getAllOfRange = function getAllOfRange (date, range, reverse) {
+UcarDate.prototype.getAllOfRange = function getAllOfRange (range, date, reverse) {
     if ( range === void 0 ) range = 0;
+    if ( date === void 0 ) date = this;
     if ( reverse === void 0 ) reverse = false;
 
-  var one = new UcarDate(date);
+  var one = !(date instanceof UcarDate)? new UcarDate(date) : this;
   var arr = [];
   for (var i = 0; i < range; i += 1, one = reverse ? one.preDay() : one.nextDay()) {
     reverse ? arr.unshift(one) : arr.push(one);
@@ -68,7 +69,7 @@ UcarDate.prototype.getOffsetOfDate = function getOffsetOfDate (date) {
 };
 
 UcarDate.prototype.getAllOfWeek = function getAllOfWeek () {
-  return this.getAllOfRange(this.firstDayOfWeek, 7);
+  return this.getAllOfRange(7, this.firstDayOfWeek);
 };
 
 UcarDate.prototype.getDaysOfMonth = function getDaysOfMonth () {
@@ -76,7 +77,7 @@ UcarDate.prototype.getDaysOfMonth = function getDaysOfMonth () {
 };
 
 UcarDate.prototype.getAllOfMonth = function getAllOfMonth () {
-  return this.getAllOfRange(this.firstDayOfMonth, this.getDaysOfMonth());
+  return this.getAllOfRange(this.getDaysOfMonth(), this.firstDayOfMonth);
 };
 
 UcarDate.prototype.getDaysOfYear = function getDaysOfYear () {
@@ -84,7 +85,7 @@ UcarDate.prototype.getDaysOfYear = function getDaysOfYear () {
 };
 
 UcarDate.prototype.getAllOfYear = function getAllOfYear () {
-  return this.getAllOfRange(this.firstDayOfYear, this.getDaysOfYear());
+  return this.getAllOfRange(this.getDaysOfYear(), this.firstDayOfYear);
 };
 
 UcarDate.prototype.getWeeksOfMonth = function getWeeksOfMonth () {

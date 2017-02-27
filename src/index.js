@@ -47,8 +47,8 @@ class UcarDate {
     return format.replace(/yyyy(.)MM(.)dd/, `${this.year}$1${fillZero(this.month)}$2${fillZero(this.date)}`);
   }
 
-  getAllOfRange(date, range = 0, reverse = false) {
-    let one = new UcarDate(date);
+  getAllOfRange(range = 0, date = this, reverse = false) {
+    let one = !(date instanceof UcarDate)  ? new UcarDate(date) : this;
     const arr = [];
     for (let i = 0; i < range; i += 1, one = reverse ? one.preDay() : one.nextDay()) {
       reverse ? arr.unshift(one) : arr.push(one)
@@ -62,7 +62,7 @@ class UcarDate {
   }
 
   getAllOfWeek() {
-    return this.getAllOfRange(this.firstDayOfWeek, 7);
+    return this.getAllOfRange(7, this.firstDayOfWeek);
   }
 
   getDaysOfMonth() {
@@ -70,7 +70,7 @@ class UcarDate {
   }
 
   getAllOfMonth() {
-    return this.getAllOfRange(this.firstDayOfMonth, this.getDaysOfMonth());
+    return this.getAllOfRange(this.getDaysOfMonth(), this.firstDayOfMonth);
   }
 
   getDaysOfYear() {
@@ -78,7 +78,7 @@ class UcarDate {
   }
 
   getAllOfYear() {
-    return this.getAllOfRange(this.firstDayOfYear, this.getDaysOfYear());
+    return this.getAllOfRange(this.getDaysOfYear(), this.firstDayOfYear);
   }
 
   getWeeksOfMonth() {

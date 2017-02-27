@@ -118,11 +118,11 @@ describe('UcarDate', function () {
   });
   describe('@getAllOfRange', function () {
     it('获取指定范围内的所有日期实例', function () {
-      const arr = foo.getAllOfRange('2018-02-05', 40);
+      const arr = foo.getAllOfRange(40, '2018-02-05');
       assert.equal(40, arr.length);
       assert.equal('2018-02-05', arr[0].getDateStr());
       assert.equal('2018-03-16', arr[arr.length - 1].getDateStr());
-      const preArr = foo.getAllOfRange('2018-02-05', 40, true);
+      const preArr = foo.getAllOfRange(40, '2018-02-05', true);
       assert.equal(40, preArr.length);
       assert.equal('2017-12-28', preArr[0].getDateStr());
       assert.equal('2018-02-05', preArr[arr.length - 1].getDateStr());
