@@ -9,6 +9,7 @@ const fillZero = (num, total = 2) => {
 const addProperty = function (key, value) {
   Object.defineProperty(this, key, { configurable: true, enumerable: true, value, writable: false });
 };
+const quotient = (dividend, divisor) => parseInt(((dividend / divisor) + '').replace(/\.\d*/), 10);
 const ONEDAY = 1000 * 60 * 60 * 24;
 class UcarDate {
   constructor(date) {
@@ -40,6 +41,9 @@ class UcarDate {
     firstDayOfYear.setFullYear(this.year, 0, 1);
     add('firstDayOfYear', firstDayOfYear);
     add('offsetOfLastMonth', (new Date(this.firstDayOfMonth.getTime())).getDay());
+    let noWeek = quotient(this.date, 7);
+    noWeek += (this.offsetOfLastMonth <= 1 || this.offsetOfLastMonth > 5) && this.date % 7 !== 0 ? 1 : 0;
+    add('noWeekOfMonth', noWeek);
     add('dateStr', `${fillZero(this.year)}-${fillZero(this.month)}-${fillZero(this.date)}`);
   }
 

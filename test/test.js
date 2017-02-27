@@ -3,8 +3,16 @@ import { assert } from 'chai';
 const foo = new UcarDate('2017-02-21');
 describe('UcarDate', function () {
   describe('offsetOfLastMonth', function () {
-    it('获取这个月的第一天应该是周几', function () {
+    it('当月1号周几', function () {
       assert.equal(3, foo.offsetOfLastMonth);
+    });
+  });
+  describe('noWeekOfMonth', function () {
+    it('当日属于本月的第几周', function () {
+      assert.equal(3, foo.noWeekOfMonth);
+      assert.equal(1, (new UcarDate('2017-08-12')).noWeekOfMonth);
+      assert.equal(0, (new UcarDate('2017-09-03')).noWeekOfMonth);
+      assert.equal(3, (new UcarDate('2017-12-22')).noWeekOfMonth);
     });
   });
   describe('@getAllOfWeek', function () {

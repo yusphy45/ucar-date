@@ -11,6 +11,7 @@ var fillZero = function (num, total) {
 var addProperty = function (key, value) {
   Object.defineProperty(this, key, { configurable: true, enumerable: true, value: value, writable: false });
 };
+var quotient = function (dividend, divisor) { return parseInt(((dividend / divisor) + '').replace(/\.\d*/), 10); };
 var ONEDAY = 1000 * 60 * 60 * 24;
 var UcarDate = function UcarDate(date) {
   var result = new Date();
@@ -41,6 +42,9 @@ var UcarDate = function UcarDate(date) {
   firstDayOfYear.setFullYear(this.year, 0, 1);
   add('firstDayOfYear', firstDayOfYear);
   add('offsetOfLastMonth', (new Date(this.firstDayOfMonth.getTime())).getDay());
+  var noWeek = quotient(this.date, 7);
+  noWeek += (this.offsetOfLastMonth <= 1 || this.offsetOfLastMonth > 5) && this.date % 7 !== 0 ? 1 : 0;
+  add('noWeekOfMonth', noWeek);
   add('dateStr', ((fillZero(this.year)) + "-" + (fillZero(this.month)) + "-" + (fillZero(this.date))));
 };
 

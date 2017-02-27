@@ -28,6 +28,9 @@ u.month
 	
 # 月中的第几日:Number
 u.date
+
+# 当日属于本月的第几周:Number
+u.noWeekOfMonth
 	
 # 周几:Number
 u.day
