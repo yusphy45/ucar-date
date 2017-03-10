@@ -9,12 +9,12 @@ describe('UcarDate', function () {
   });
   describe('noWeekOfMonth', function () {
     it('当日属于本月的第几周', function () {
-      assert.equal(3, foo.noWeekOfMonth);
-      assert.equal(4, (new UcarDate('2017-02-27')).noWeekOfMonth);
-      assert.equal(4, (new UcarDate('2017-03-30')).noWeekOfMonth);
-      assert.equal(1, (new UcarDate('2017-08-12')).noWeekOfMonth);
-      assert.equal(0, (new UcarDate('2017-09-03')).noWeekOfMonth);
-      assert.equal(3, (new UcarDate('2017-12-22')).noWeekOfMonth);
+      assert.equal(4, foo.noWeekOfMonth);
+      assert.equal(5, (new UcarDate('2017-02-27')).noWeekOfMonth);
+      assert.equal(5, (new UcarDate('2017-03-30')).noWeekOfMonth);
+      assert.equal(2, (new UcarDate('2017-08-12')).noWeekOfMonth);
+      assert.equal(1, (new UcarDate('2017-09-03')).noWeekOfMonth);
+      assert.equal(4, (new UcarDate('2017-12-22')).noWeekOfMonth);
     });
   });
   describe('@getAllOfWeek', function () {
@@ -60,7 +60,7 @@ describe('UcarDate', function () {
     });
   });
   describe('@getWeeksOfMonth', function () {
-    it('获取这个月有多少周（按照首日非周日则并入上月计算)', function () {
+    it('获取这个月有多少周（按照最后一日非周日则并入下月计算)', function () {
       assert.equal(4, foo.getWeeksOfMonth());
     });
   });

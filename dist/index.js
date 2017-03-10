@@ -42,8 +42,9 @@ var UcarDate = function UcarDate(date) {
   firstDayOfYear.setFullYear(this.year, 0, 1);
   add('firstDayOfYear', firstDayOfYear);
   add('offsetOfLastMonth', (new Date(this.firstDayOfMonth.getTime())).getDay());
-  var noWeek = quotient(this.date + this.offsetOfLastMonth - 8, 7);
-  noWeek += (this.date + this.offsetOfLastMonth - 8) % 7 !== 0 ? 1 : 0;
+  var offset = this.offsetOfLastMonth === 0 ? 7 : this.offsetOfLastMonth;
+  var noWeek = quotient(this.date + offset - 1, 7);
+  noWeek += (this.date + offset - 1) % 7 !== 0 ? 1 : 0;
   add('noWeekOfMonth', noWeek);
   add('dateStr', ((fillZero(this.year)) + "-" + (fillZero(this.month)) + "-" + (fillZero(this.date))));
 };
@@ -99,7 +100,7 @@ UcarDate.prototype.getWeeksOfMonth = function getWeeksOfMonth () {
       return 4;
       break;
     case 29:
-      return flag === 1 ? 5 : 4;
+      return flag === 0 ? 5 : 4;
       break;
     case 30:
       return flag === 0 || flag > 6 ? 5 : 4;

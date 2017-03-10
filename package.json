@@ -1,6 +1,6 @@
 {
   "name": "ucar-date",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "ucar uitl for Date",
   "main": "dist/index.js",
   "scripts": {
