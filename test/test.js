@@ -24,7 +24,7 @@ describe('UcarDate', function () {
       assert.equal('2017-02-20', result[0].getDateStr());
       assert.equal(1, result[0].day);
       assert.equal('2017-02-26', result[result.length - 1].getDateStr());
-      assert.equal(0, result[result.length - 1].day);
+      assert.equal(7, result[result.length - 1].day);
     });
   });
   describe('@getDaysOfMonth', function () {
@@ -81,7 +81,7 @@ describe('UcarDate', function () {
       assert.equal('2017-02-13', result[0].getDateStr());
       assert.equal(1, result[0].day);
       assert.equal('2017-02-19', result[result.length - 1].getDateStr());
-      assert.equal(0, result[result.length - 1].day);
+      assert.equal(7, result[result.length - 1].day);
     });
   });
   describe('@getAllOfNextWeek', function () {
@@ -91,7 +91,7 @@ describe('UcarDate', function () {
       assert.equal('2017-02-27', result[0].getDateStr());
       assert.equal(1, result[0].day);
       assert.equal('2017-03-05', result[result.length - 1].getDateStr());
-      assert.equal(0, result[result.length - 1].day);
+      assert.equal(7, result[result.length - 1].day);
     });
   });
   describe('@getAllOfPreMonth', function () {

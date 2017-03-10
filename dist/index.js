@@ -29,22 +29,23 @@ var UcarDate = function UcarDate(date) {
   add('year', this.value.getFullYear());
   add('month', this.value.getMonth() + 1);
   add('date', this.value.getDate());
-  add('day', this.value.getDay());
+  add('day', this.value.getDay() === 0 ? 7 : this.value.getDay());
   add('isLeapYear', this.year % 4 === 0);
   add('isLongMonth', [1, 3, 5, 7, 8, 10, 12].indexOf(this.month) !== -1);
-  var firstDayOfWeek = new Date();
-  firstDayOfWeek.setTime(this.timestamp - ONEDAY * (this.day - 1));
-  add('firstDayOfWeek', firstDayOfWeek);
   var firstDayOfMonth = new Date();
   firstDayOfMonth.setFullYear(this.year, this.month - 1, 1);
   add('firstDayOfMonth', firstDayOfMonth);
   var firstDayOfYear = new Date();
   firstDayOfYear.setFullYear(this.year, 0, 1);
   add('firstDayOfYear', firstDayOfYear);
-  add('offsetOfLastMonth', (new Date(this.firstDayOfMonth.getTime())).getDay());
-  var offset = this.offsetOfLastMonth === 0 ? 7 : this.offsetOfLastMonth;
-  var noWeek = quotient(this.date + offset - 1, 7);
-  noWeek += (this.date + offset - 1) % 7 !== 0 ? 1 : 0;
+  var offsetOfLastMonth = (new Date(this.firstDayOfMonth.getTime())).getDay();
+  if (offsetOfLastMonth === 0) { offsetOfLastMonth = 7; }
+  add('offsetOfLastMonth', offsetOfLastMonth);
+  var firstDayOfWeek = new Date();
+  firstDayOfWeek.setTime(this.timestamp - ONEDAY * (this.day - 1));
+  add('firstDayOfWeek', firstDayOfWeek);
+  var noWeek = quotient(this.date + this.offsetOfLastMonth - 1, 7);
+  noWeek += (this.date + this.offsetOfLastMonth - 1) % 7 !== 0 ? 1 : 0;
   add('noWeekOfMonth', noWeek);
   add('dateStr', ((fillZero(this.year)) + "-" + (fillZero(this.month)) + "-" + (fillZero(this.date))));
 };
@@ -100,13 +101,13 @@ UcarDate.prototype.getWeeksOfMonth = function getWeeksOfMonth () {
       return 4;
       break;
     case 29:
-      return flag === 0 ? 5 : 4;
+      return flag === 7 ? 5 : 4;
       break;
     case 30:
-      return flag === 0 || flag > 6 ? 5 : 4;
+      return flag >= 6 ? 5 : 4;
       break;
     case 31:
-      return flag === 0 || flag > 5 ? 5 : 4;
+      return flag >= 5 ? 5 : 4;
       break;
   }
 };
