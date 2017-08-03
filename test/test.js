@@ -9,11 +9,13 @@ describe('UcarDate', function () {
   });
   describe('noWeekOfMonth', function () {
     it('当日属于本月的第几周', function () {
-      assert.equal(4, foo.noWeekOfMonth);
       assert.equal(5, (new UcarDate('2017-02-27')).noWeekOfMonth);
       assert.equal(5, (new UcarDate('2017-03-30')).noWeekOfMonth);
-      assert.equal(2, (new UcarDate('2017-08-12')).noWeekOfMonth);
+      assert.equal(6, (new UcarDate('2017-07-31')).noWeekOfMonth);
+      assert.equal(1, (new UcarDate('2017-08-02')).noWeekOfMonth);
+      assert.equal(2, (new UcarDate('2017-08-07')).noWeekOfMonth);
       assert.equal(1, (new UcarDate('2017-09-03')).noWeekOfMonth);
+      assert.equal(2, (new UcarDate('2017-09-04')).noWeekOfMonth);
       assert.equal(4, (new UcarDate('2017-12-22')).noWeekOfMonth);
     });
   });

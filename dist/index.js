@@ -45,7 +45,7 @@ var UcarDate = function UcarDate(date) {
   firstDayOfWeek.setTime(this.timestamp - ONEDAY * (this.day - 1));
   add('firstDayOfWeek', firstDayOfWeek);
   var noWeek = quotient(this.date + this.offsetOfLastMonth - 1, 7);
-  noWeek += (this.date + this.offsetOfLastMonth - 1) % 7 !== 0 ? 1 : 0;
+  noWeek += (this.date + this.offsetOfLastMonth - 1) % 7 > 0 ? 1 : 0;
   add('noWeekOfMonth', noWeek);
   add('dateStr', ((fillZero(this.year)) + "-" + (fillZero(this.month)) + "-" + (fillZero(this.date))));
 };
