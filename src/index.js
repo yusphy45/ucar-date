@@ -129,7 +129,7 @@ class UcarDate {
   }
 
   getAllOfNextMonth() {
-    const u = new UcarDate((new Date(this.timestamp)).setMonth(this.month));
+    const u = new UcarDate((new Date(this.timestamp)).setMonth(this.month, 1));
     return u.getAllOfMonth();
   }
 

@@ -110,6 +110,7 @@ describe('UcarDate', function () {
       assert.equal(31, result.length);
       assert.equal('2017-03-01', result[0].getDateStr());
       assert.equal('2017-03-31', result[result.length - 1].getDateStr());
+      assert.equal('2017-06-01', (new UcarDate('2017-05-31')).getAllOfNextMonth()[0].getDateStr());
     });
   });
   describe('@getAllOfPreYear', function () {

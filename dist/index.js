@@ -136,7 +136,7 @@ UcarDate.prototype.getAllOfPreMonth = function getAllOfPreMonth () {
 };
 
 UcarDate.prototype.getAllOfNextMonth = function getAllOfNextMonth () {
-  var u = new UcarDate((new Date(this.timestamp)).setMonth(this.month));
+  var u = new UcarDate((new Date(this.timestamp)).setMonth(this.month, 1));
   return u.getAllOfMonth();
 };
 
